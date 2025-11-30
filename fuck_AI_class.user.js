@@ -118,9 +118,9 @@
             }
 
             // 2. 其次处理 PPT (检测是否有页码如 29 / 34)
-            if (handlePPT()) {
-                return; // 如果在翻 PPT，也不管别的
-            }
+            //if (handlePPT()) {
+            //    return; // 如果在翻 PPT，也不管别的
+            //}
 
             // 3. 处理 Word/文档 (自动滚动)
             handleDocumentScroll();
