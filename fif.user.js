@@ -97,11 +97,11 @@
         ].join(';');
 
         const statusText = document.createElement('div');
-        statusText.innerText = '刷课插件运行中...';
+        statusText.innerText = '刷课中...';
         statusText.style.cssText = 'margin-bottom:8px;color:#2ecc71;font-weight:bold;';
 
         const toggleBtn = document.createElement('button');
-        toggleBtn.innerText = '⏸ 暂停脚本';
+        toggleBtn.innerText = '⏸';
         toggleBtn.style.cssText = [
             'width:100%',
             'padding:5px 0',
@@ -120,12 +120,12 @@
         toggleBtn.onclick = () => {
             isScriptRunning = !isScriptRunning;
             if (isScriptRunning) {
-                toggleBtn.innerText = '⏸ 暂停脚本';
+                toggleBtn.innerText = '⏸';
                 toggleBtn.style.background = '#e74c3c';
-                statusText.innerText = '全能模式运行中...';
+                statusText.innerText = '刷课中...';
                 statusText.style.color = '#2ecc71';
             } else {
-                toggleBtn.innerText = '▶ 恢复运行';
+                toggleBtn.innerText = '▶';
                 toggleBtn.style.background = '#2ecc71';
                 statusText.innerText = '脚本已暂停';
                 statusText.style.color = '#f1c40f';
