@@ -1,10 +1,10 @@
-# auto_fuck_AI_class
-干碎你这个破人工智能概论
+# Auto-fifedu
+人工智能导论一坨大便
 
-这个脚本不完备，目前的功能就是自动播放视频和跳转到下一节
-阅读word和ppt大概率有问题
+脚本已经完备，蓝本来自 [OrTabby/auto-fuck-fifedu-AI-class](https://github.com/OrTabby/auto-fuck-fifedu-AI-class)
 
 使用方法
 
-将文件导入到脚本猫或油猴什么的运行脚本的插件就行
-道理来说OCS也可以
+将文件导入到油猴插件（TamperMonkey 浏览器插件自己装下），然后把 fif.user.js 拖进去就能用
+
+首先得打开一个课程，然后他就会自动运行了
