@@ -2,7 +2,7 @@
 // @name         人工智能导论（全自动刷课）
 // @namespace    http://tampermonkey.net/
 // @version      9.0.1
-// @description  按“本节资源”列表顺序刷：PPT翻页(.pptBtn .arrow-right) + 视频16倍速 + 文档滚动；所有资源100%后才点“继续学习下一节”。列表无未完成资源时直接跳下一节。
+// @description  按“本节资源”列表顺序刷：PPT翻页(.pptBtn .arrow-right) + 视频16倍速 + 文档滚动；
 // @author       TargetKiller (fix by CarlSkyCoding)
 // @match        *://icourse.fifedu.com/*
 // @match        *://resc.fifedu.com/*
@@ -35,7 +35,7 @@
         'button[title="Next"]'
     ];
 
-    console.log('>>> V9.0 精简整理版脚本已加载...');
+    console.log('>>> 人工智能导论刷课 插件已加载...');
 
     /********************
      * 伪装前台 & 防休眠
@@ -97,7 +97,7 @@
         ].join(';');
 
         const statusText = document.createElement('div');
-        statusText.innerText = '全能模式运行中...';
+        statusText.innerText = '刷课插件运行中...';
         statusText.style.cssText = 'margin-bottom:8px;color:#2ecc71;font-weight:bold;';
 
         const toggleBtn = document.createElement('button');
@@ -161,9 +161,8 @@
 
             // 1. 分析“本节资源”列表
             const resourceState = analyzeActivityList();
-            if (resourceState.hasAnyResource) hasAnyResourceSeen = true; // 当前版本暂未用到 hasAnyResourceSeen，但保留变量
+            if (resourceState.hasAnyResource) hasAnyResourceSeen = true;
 
-            // 2. 若有未完成资源，保证当前激活的是第一个未完成资源
             if (resourceState.hasAnyResource && resourceState.hasUnfinished) {
                 const { activeItem, firstUnfinishedItem } = resourceState;
                 if (!activeItem || isResourceFinished(activeItem)) {
@@ -235,13 +234,13 @@
 
             // 调试状态输出
             const statusPieces = [
-                `页面稳定:${pageStable ? '是' : '否'}`,
-                `本节有资源:${resourceState.hasAnyResource ? '是' : '否'}`,
-                `存在未完成资源:${resourceState.hasUnfinished ? '是' : '否'}`,
+                `页面${pageStable ? '' : '不'}稳定`,
+                `本节${resourceState.hasAnyResource ? '有' : '无'}资源`,
+                `存在完成资源:${resourceState.hasUnfinished ? '是' : '否'}`,
                 `当前类型:${activeType || '无'}`,
-                `视频完:${videoFinished ? '是' : '否'}`,
-                `PPT完:${pptFinished ? '是' : '否'}`,
-                `文档完:${docState.finished ? '是' : '否'}`
+                `视频完成:${videoFinished ? '是' : '否'}`,
+                `PPT完成:${pptFinished ? '是' : '否'}`,
+                `文档完成:${docState.finished ? '是' : '否'}`
             ];
             updateLog(statusPieces.join(' | '), '#bdc3c7');
         }, CHECK_INTERVAL);
